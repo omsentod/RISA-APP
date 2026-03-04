@@ -1,4 +1,3 @@
-// ===== HEADER SCROLL EFFECT =====
 const header = document.getElementById('header');
 
 window.addEventListener('scroll', () => {
@@ -9,7 +8,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ===== MOBILE MENU TOGGLE =====
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
@@ -17,7 +15,6 @@ menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
-// Close menu when clicking on a link
 const navLinksItems = navLinks.querySelectorAll('a');
 navLinksItems.forEach(link => {
     link.addEventListener('click', () => {
@@ -25,14 +22,12 @@ navLinksItems.forEach(link => {
     });
 });
 
-// Close menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
         navLinks.classList.remove('active');
     }
 });
 
-// ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -49,7 +44,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ===== PARALLAX EFFECT FOR MANUFACTURING SECTION =====
 const manufacturingSection = document.querySelector('.manufacturing');
 const parallaxBg = document.querySelector('.parallax-bg');
 
@@ -58,7 +52,6 @@ window.addEventListener('scroll', () => {
         const rect = manufacturingSection.getBoundingClientRect();
         const scrollY = window.scrollY;
 
-        // Only apply parallax when section is in view
         if (rect.top < window.innerHeight && rect.bottom > 0) {
             const offset = scrollY * 0.3;
             parallaxBg.style.transform = `translateY(${offset}px)`;
@@ -66,11 +59,9 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ===== TIMELINE INTERACTION =====
 const timelineItems = document.querySelectorAll('.timeline-item');
 const timelineDots = document.querySelectorAll('.timeline-dots .dot');
 
-// Function to set active timeline item
 function setActiveTimeline(index) {
     timelineItems.forEach(item => item.classList.remove('active'));
     timelineDots.forEach(dot => dot.classList.remove('active'));
@@ -81,14 +72,12 @@ function setActiveTimeline(index) {
     }
 }
 
-// Hover on timeline cards
 timelineItems.forEach((item, index) => {
     item.addEventListener('mouseenter', () => {
         setActiveTimeline(index);
     });
 });
 
-// When cursor leaves the entire timeline container, deactivate all
 const timelineSection = document.querySelector('.timeline');
 if (timelineSection) {
     timelineSection.addEventListener('mouseleave', () => {
@@ -96,14 +85,12 @@ if (timelineSection) {
     });
 }
 
-// Click on timeline dots
 timelineDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
         setActiveTimeline(index);
     });
 });
 
-// ===== SCROLL ANIMATIONS =====
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -113,7 +100,7 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
-            // Only reset transform if element is NOT a timeline card
+
             if (!entry.target.classList.contains('timeline-card')) {
                 entry.target.style.transform = 'translateY(0)';
             }
@@ -121,7 +108,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for scroll animations
 const animatedElements = document.querySelectorAll('.product-card, .capability-card, .cert-card');
 animatedElements.forEach(el => {
     el.style.opacity = '0';
@@ -130,7 +116,6 @@ animatedElements.forEach(el => {
     observer.observe(el);
 });
 
-// Animate timeline items separately (without transform conflict)
 const timelineCards = document.querySelectorAll('.timeline-card');
 timelineCards.forEach(el => {
     el.style.opacity = '0';
@@ -138,27 +123,25 @@ timelineCards.forEach(el => {
     observer.observe(el);
 });
 
-// ===== PRODUCT SCROLL INDICATOR =====
 const productsScroll = document.querySelector('.products-scroll');
 
 if (productsScroll) {
-    // Add scroll indicator dots
+
     const productCards = document.querySelectorAll('.product-card');
 
     productsScroll.addEventListener('scroll', () => {
-        // Optional: Add scroll position indicators
+
         const scrollPercentage = (productsScroll.scrollLeft / (productsScroll.scrollWidth - productsScroll.clientWidth)) * 100;
-        // You can use this to update UI indicators if needed
+
     });
 }
 
-// ===== METRICS ANIMATION =====
 const metricsSection = document.querySelector('.certifications');
 
 const metricsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Animate metric bars
+
             const metricBars = document.querySelectorAll('.metric-fill');
             metricBars.forEach(bar => {
                 const width = bar.style.width;
@@ -176,7 +159,6 @@ if (metricsSection) {
     metricsObserver.observe(metricsSection);
 }
 
-// ===== NEWSLETTER FORM =====
 const newsletterForm = document.querySelector('.newsletter-form');
 if (newsletterForm) {
     newsletterForm.addEventListener('submit', (e) => {
@@ -189,11 +171,10 @@ if (newsletterForm) {
     });
 }
 
-// ===== BUTTON CLICK EFFECTS =====
 const allButtons = document.querySelectorAll('button');
 allButtons.forEach(button => {
     button.addEventListener('click', function (e) {
-        // Create ripple effect
+
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
@@ -223,7 +204,6 @@ allButtons.forEach(button => {
     });
 });
 
-// Add ripple animation to CSS via JavaScript
 const style = document.createElement('style');
 style.innerHTML = `
 @keyframes ripple {
@@ -235,16 +215,12 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
-
-
-// ===== CONSOLE MESSAGE =====
 console.log('%c🏥 PT RISA IMPLANTAMA', 'font-size: 20px; font-weight: bold; color: #DB032D;');
 console.log('%cPremium Orthopedic Implants Since 1993', 'font-size: 14px; color: #202356;');
 console.log('%c✓ ISO 13485:2016 Certified', 'font-size: 12px; color: #666;');
 console.log('%c✓ ISO 9001:2015 Certified', 'font-size: 12px; color: #666;');
 console.log('%c✓ CPAKB Certified', 'font-size: 12px; color: #666;');
 
-// ===== MANUFACTURING GALLERY CAROUSEL =====
 (function () {
     const slides = document.querySelectorAll('.mfg-slide');
     const thumbs = document.querySelectorAll('.mfg-thumb');
@@ -302,4 +278,3 @@ console.log('%c✓ CPAKB Certified', 'font-size: 12px; color: #666;');
 
     setSlide(0);
 })();
-
