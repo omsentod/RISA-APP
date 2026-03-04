@@ -72,63 +72,34 @@ const timelineDots = document.querySelectorAll('.timeline-dots .dot');
 
 // Function to set active timeline item
 function setActiveTimeline(index) {
-    // Remove active class from all items
     timelineItems.forEach(item => item.classList.remove('active'));
     timelineDots.forEach(dot => dot.classList.remove('active'));
 
-    // Add active class to selected item
-    if (timelineItems[index]) {
-        timelineItems[index].classList.add('active');
-    }
-    if (timelineDots[index]) {
-        timelineDots[index].classList.add('active');
+    if (index !== null) {
+        if (timelineItems[index]) timelineItems[index].classList.add('active');
+        if (timelineDots[index]) timelineDots[index].classList.add('active');
     }
 }
 
-// Click on timeline cards
+// Hover on timeline cards
 timelineItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
+    item.addEventListener('mouseenter', () => {
         setActiveTimeline(index);
     });
 });
+
+// When cursor leaves the entire timeline container, deactivate all
+const timelineSection = document.querySelector('.timeline');
+if (timelineSection) {
+    timelineSection.addEventListener('mouseleave', () => {
+        setActiveTimeline(null);
+    });
+}
 
 // Click on timeline dots
 timelineDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
         setActiveTimeline(index);
-
-        // Scroll to timeline item
-        const timelineSection = document.getElementById('timeline');
-        if (timelineSection) {
-            const offset = timelineSection.offsetTop - 100;
-            window.scrollTo({
-                top: offset,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Auto-rotate timeline (optional)
-let currentTimelineIndex = 2; // Start with index 2 (year 2008)
-setActiveTimeline(currentTimelineIndex);
-
-function autoRotateTimeline() {
-    currentTimelineIndex = (currentTimelineIndex + 1) % timelineItems.length;
-    setActiveTimeline(currentTimelineIndex);
-}
-
-// Auto-rotate every 5 seconds
-let timelineInterval = setInterval(autoRotateTimeline, 5000);
-
-// Pause auto-rotate when user interacts
-timelineItems.forEach(item => {
-    item.addEventListener('click', () => {
-        clearInterval(timelineInterval);
-        // Resume after 10 seconds
-        setTimeout(() => {
-            timelineInterval = setInterval(autoRotateTimeline, 5000);
-        }, 10000);
     });
 });
 
@@ -142,17 +113,28 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            // Only reset transform if element is NOT a timeline card
+            if (!entry.target.classList.contains('timeline-card')) {
+                entry.target.style.transform = 'translateY(0)';
+            }
         }
     });
 }, observerOptions);
 
 // Observe elements for scroll animations
-const animatedElements = document.querySelectorAll('.product-card, .capability-card, .cert-card, .timeline-card');
+const animatedElements = document.querySelectorAll('.product-card, .capability-card, .cert-card');
 animatedElements.forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
+// Animate timeline items separately (without transform conflict)
+const timelineCards = document.querySelectorAll('.timeline-card');
+timelineCards.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transition = 'opacity 0.6s ease';
     observer.observe(el);
 });
 
@@ -228,7 +210,10 @@ allButtons.forEach(button => {
         ripple.style.animation = 'ripple 0.6s ease-out';
         ripple.style.pointerEvents = 'none';
 
-        this.style.position = 'relative';
+        const computedPos = window.getComputedStyle(this).position;
+        if (computedPos === 'static') {
+            this.style.position = 'relative';
+        }
         this.style.overflow = 'hidden';
         this.appendChild(ripple);
 
@@ -258,3 +243,63 @@ console.log('%cPremium Orthopedic Implants Since 1993', 'font-size: 14px; color:
 console.log('%c✓ ISO 13485:2016 Certified', 'font-size: 12px; color: #666;');
 console.log('%c✓ ISO 9001:2015 Certified', 'font-size: 12px; color: #666;');
 console.log('%c✓ CPAKB Certified', 'font-size: 12px; color: #666;');
+
+// ===== MANUFACTURING GALLERY CAROUSEL =====
+(function () {
+    const slides = document.querySelectorAll('.mfg-slide');
+    const thumbs = document.querySelectorAll('.mfg-thumb');
+    const dots = document.querySelectorAll('.mfg-dot');
+    const prevBtn = document.querySelector('.mfg-prev');
+    const nextBtn = document.querySelector('.mfg-next');
+    const currentEl = document.querySelector('.mfg-current');
+    const total = slides.length;
+
+    if (!slides.length) return;
+
+    let current = 0;
+
+    function setSlide(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        current = index;
+
+        slides.forEach(s => s.classList.remove('active'));
+        slides[current].classList.add('active');
+
+        thumbs.forEach(t => t.classList.remove('active'));
+        if (thumbs[current]) thumbs[current].classList.add('active');
+
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[current]) dots[current].classList.add('active');
+
+        if (currentEl) currentEl.textContent = String(current + 1).padStart(2, '0');
+
+        if (thumbs[current]) {
+            thumbs[current].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    }
+
+    prevBtn && prevBtn.addEventListener('click', () => setSlide(current - 1));
+    nextBtn && nextBtn.addEventListener('click', () => setSlide(current + 1));
+
+    thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => setSlide(parseInt(thumb.dataset.index)));
+    });
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => setSlide(parseInt(dot.dataset.index)));
+    });
+
+    document.addEventListener('keydown', (e) => {
+        const gallery = document.querySelector('.mfg-gallery');
+        if (!gallery) return;
+        const rect = gallery.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            if (e.key === 'ArrowRight') setSlide(current + 1);
+            if (e.key === 'ArrowLeft') setSlide(current - 1);
+        }
+    });
+
+    setSlide(0);
+})();
+
