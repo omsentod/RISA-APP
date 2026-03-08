@@ -196,6 +196,12 @@ a {
     align-items: center;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -233,6 +239,10 @@ a {
 
 .nav-links a:hover {
     color: var(--color-red);
+}
+
+.ctc a:hover{
+    color: none;
 }
 
 .menu-toggle {
