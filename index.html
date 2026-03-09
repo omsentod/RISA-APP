@@ -44,10 +44,6 @@
                             <a href="#certifications">Certifications</a>
                             <a href="#contact">Contact</a>
                         </div>
-                        <!-- Desktop CTA (only visible on desktop) -->
-                        <a href="#contact" class="btn-primary desktop-cta" style="text-decoration:none; display: flex; align-items: center; justify-content: center; margin-left:1.5rem;">
-                            Submit an offer <span style="font-size: 20px; margin-left: 10px;">→</span>
-                        </a>
                     </div>
                     
                     <button class="menu-toggle" id="menuToggle">
@@ -60,9 +56,9 @@
         </nav>
     </header>
 
-    <!-- Mobile CTA Wrapper (only visible on mobile, fixed at bottom) -->
-    <div class="nav-cta-wrapper mobile-cta-wrapper" id="navCtaWrapper">
-        <a href="#contact" class="btn-primary" style="text-decoration:none; display: flex; align-items: center; justify-content: center;">
+    <!-- Mobile CTA Wrapper (moved outside header for fixed positioning) -->
+    <div class="nav-cta-wrapper" id="navCtaWrapper">
+        <a href="" class="btn-primary" style="text-decoration:none; display: flex; align-items: center; justify-content: center;">
             Submit an offer <span style="font-size: 20px; margin-left: 10px;">→</span>
         </a>
         <button class="cta-close" id="ctaClose" aria-label="Close offer">&times;</button>
@@ -71,6 +67,11 @@
     
     <section id="home" class="hero">
         <div class="hero-bg">
+            <!-- Full background video -->
+            <video src="assets/video/PT RISA IMPLANTAMA.mp4" autoplay loop playsinline class="hero-bg-video"></video>
+            <!-- Overlay reduksi kontras agar teks terbaca -->
+            <div class="hero-overlay"></div>
+            
             <div class="gradient-orb orb-1"></div>
             <div class="gradient-orb orb-2"></div>
             <div class="grid-pattern"></div>
@@ -78,9 +79,7 @@
         
         <div class="container">
             <div class="hero-content">
-                <div class="hero-left">
-                    
-                    
+                <div class="hero-left">                    
                     <div class="hero-title-wrapper">
                         <div class="hero-bg-text">PT</div>
                         <h1 class="hero-title">
@@ -102,28 +101,6 @@
                     <div class="hero-buttons">
                         <a href="#products" class="btn-primary btn-large" style="text-decoration:none">Explore Catalog →</a>
                         
-                    </div>
-                </div>
-                
-                <div class="hero-right">
-                    <div class="product-showcase">
-                        <div class="blueprint-grid"></div>
-                        <img src="assets/images/hero-titanium-implant.jpg" alt="Titanium Implant" class="product-image">
-                        <div class="glow-accent glow-1"></div>
-                        <div class="glow-accent glow-2"></div>
-                    </div>
-                    
-                    <div class="floating-info info-left">
-                        <div class="info-icon"></div>
-                        <div class="info-content">
-                            <div class="info-title">Titanium Grade 5</div>
-                            <div class="info-subtitle">Biocompatible Ti-6Al-4V</div>
-                        </div>
-                    </div>
-                    
-                    <div class="floating-info info-right">
-                        <span class="status-dot"></span>
-                        Active Manufacturing
                     </div>
                 </div>
             </div>
@@ -225,6 +202,16 @@
                         <button class="btn-primary">Download PDF</button>
                     </div>
                 </div>
+            </div>
+            
+            <div class="swipe-indicator">
+                <div class="swipe-animation">
+                    <span class="hand-icon">👆</span>
+                    <span class="swipe-arrows">
+                        <i>&rsaquo;</i><i>&rsaquo;</i><i>&rsaquo;</i>
+                    </span>
+                </div>
+                <p>Swipe or scroll right to view more catalogs and download PDF</p>
             </div>
         </div>
     </section>
