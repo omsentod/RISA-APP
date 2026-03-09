@@ -36,16 +36,19 @@
                     </a>
                     
                     <div class="nav-right">
-                    <div class="nav-links" id="navLinks">
-                        <a href="#home">Home</a>
-                        <a href="#products">Products</a>
-                        <a href="#timeline">History</a>
-                        <a href="#manufacturing">Manufacturing</a>
-                        <a href="#certifications">Certifications</a>
-                        <a href="#contact">Contact</a>
+                        <div class="nav-links" id="navLinks">
+                            <a href="#home">Home</a>
+                            <a href="#products">Products</a>
+                            <a href="#timeline">History</a>
+                            <a href="#manufacturing">Manufacturing</a>
+                            <a href="#certifications">Certifications</a>
+                            <a href="#contact">Contact</a>
                         </div>
-                        <a href="" class="btn-primary" style="text-decoration:none">Submit an offer →</a>                       
-                </div>
+                        <!-- Desktop CTA (only visible on desktop) -->
+                        <a href="#contact" class="btn-primary desktop-cta" style="text-decoration:none; display: flex; align-items: center; justify-content: center; margin-left:1.5rem;">
+                            Submit an offer <span style="font-size: 20px; margin-left: 10px;">→</span>
+                        </a>
+                    </div>
                     
                     <button class="menu-toggle" id="menuToggle">
                         <span></span>
@@ -56,6 +59,14 @@
             </div>
         </nav>
     </header>
+
+    <!-- Mobile CTA Wrapper (only visible on mobile, fixed at bottom) -->
+    <div class="nav-cta-wrapper mobile-cta-wrapper" id="navCtaWrapper">
+        <a href="#contact" class="btn-primary" style="text-decoration:none; display: flex; align-items: center; justify-content: center;">
+            Submit an offer <span style="font-size: 20px; margin-left: 10px;">→</span>
+        </a>
+        <button class="cta-close" id="ctaClose" aria-label="Close offer">&times;</button>
+    </div>
 
     
     <section id="home" class="hero">
@@ -89,7 +100,7 @@
                     
                     
                     <div class="hero-buttons">
-                        <a href="catalog.html" class="btn-primary btn-large" style="text-decoration:none">Explore Catalog →</a>
+                        <a href="#products" class="btn-primary btn-large" style="text-decoration:none">Explore Catalog →</a>
                         
                     </div>
                 </div>
@@ -525,92 +536,90 @@
             </div>
             
             <div class="certifications-grid">
-                <div class="cert-main">
-                    <h3>International Certifications</h3>
-                    <div class="cert-cards">
-                        <div class="cert-card">
-                            <div class="cert-icon">🛡️</div>
-                            <h4>ISO 13485:2016</h4>
-                            <p>Medical Devices QMS</p>
-                            <div class="cert-status">
-                                <span class="status-dot"></span>
-                                <span>Active</span>
-                                <span class="cert-valid">Valid until 2027</span>
+
+                
+                <div class="cert-main event-gallery-wrapper">
+                    <div class="event-gallery-header">
+                        <h3>📸 Company Events</h3>
+                        <p>Momen berharga perjalanan PT RISA IMPLANTAMA</p>
+                    </div>
+
+                    <div class="event-main-display">
+                        <div class="event-slides" id="eventSlides">
+                            <div class="event-slide active" data-index="0">
+                                <div class="event-placeholder">
+                                    <div class="placeholder-icon">🏢</div>
+                                    <div class="placeholder-text">Tambahkan foto event perusahaan</div>
+                                    <div class="placeholder-sub">Ganti src foto di bawah sesuai file yang diupload</div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="cert-card">
-                            <div class="cert-icon">🏆</div>
-                            <h4>ISO 9001:2015</h4>
-                            <p>Quality Management</p>
-                            <div class="cert-status">
-                                <span class="status-dot"></span>
-                                <span>Active</span>
-                                <span class="cert-valid">Valid until 2027</span>
-                            </div>
-                        </div>
-                        
-                        <div class="cert-card">
-                            <div class="cert-icon">📋</div>
-                            <h4>CPAKB</h4>
-                            <p>Indonesian Medical Device</p>
-                            <div class="cert-status">
-                                <span class="status-dot"></span>
-                                <span>Active</span>
-                                <span class="cert-valid">Valid until 2028</span>
-                            </div>
-                        </div>
-                        
-                        <div class="cert-card">
-                            <div class="cert-icon">✓</div>
-                            <h4>CE Marking</h4>
-                            <p>European Conformity</p>
-                            <div class="cert-status">
-                                <span class="status-dot"></span>
-                                <span>Active</span>
-                                <span class="cert-valid">Valid until 2027</span>
-                            </div>
+                        <button class="event-nav event-prev" id="eventPrev" aria-label="Previous">&#8249;</button>
+                        <button class="event-nav event-next" id="eventNext" aria-label="Next">&#8250;</button>
+                        <div class="event-counter"><span id="eventCurrent">1</span> / <span id="eventTotal">1</span></div>
+                    </div>
+
+                    <div class="event-thumbstrip" id="eventThumbs">
+                        <div class="event-thumb active" data-index="0">
+                            <div class="thumb-placeholder">🏢</div>
                         </div>
                     </div>
                 </div>
+
                 
                 <div class="cert-sidebar">
-                    <div class="metrics-card">
-                        <div class="metrics-header">
-                            <span>⚡</span>
-                            <h4>Live Metrics</h4>
-                        </div>
-                        <div class="metric-item">
-                            <div class="metric-label">Quality Score</div>
-                            <div class="metric-value">99.9%</div>
-                            <div class="metric-bar">
-                                <div class="metric-fill" style="width: 99.9%"></div>
+                    <h3 class="cert-sidebar-title">International Certifications</h3>
+                    <div class="cert-cards-compact">
+                        <div class="cert-card-compact">
+                            <div class="cert-icon-sm">🛡️</div>
+                            <div class="cert-info">
+                                <h4>ISO 13485:2016</h4>
+                                <p>Medical Devices QMS</p>
+                                <div class="cert-status">
+                                    <span class="status-dot"></span>
+                                    <span>Active</span>
+                                    <span class="cert-valid">Valid until 2027</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="metric-item">
-                            <div class="metric-label">Uptime</div>
-                            <div class="metric-value">99.8%</div>
-                            <div class="metric-bar">
-                                <div class="metric-fill" style="width: 99.8%"></div>
+
+                        <div class="cert-card-compact">
+                            <div class="cert-icon-sm">🏆</div>
+                            <div class="cert-info">
+                                <h4>ISO 9001:2015</h4>
+                                <p>Quality Management</p>
+                                <div class="cert-status">
+                                    <span class="status-dot"></span>
+                                    <span>Active</span>
+                                    <span class="cert-valid">Valid until 2027</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="metric-item">
-                            <div class="metric-label">Compliance Rate</div>
-                            <div class="metric-value">100%</div>
-                            <div class="metric-bar">
-                                <div class="metric-fill" style="width: 100%"></div>
+
+                        <div class="cert-card-compact">
+                            <div class="cert-icon-sm">📋</div>
+                            <div class="cert-info">
+                                <h4>CPAKB</h4>
+                                <p>Indonesian Medical Device</p>
+                                <div class="cert-status">
+                                    <span class="status-dot"></span>
+                                    <span>Active</span>
+                                    <span class="cert-valid">Valid until 2028</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="compliance-card">
-                        <h4>Compliance Standards</h4>
-                        <div class="compliance-list">
-                            <div class="compliance-item">✓ FDA Guidelines</div>
-                            <div class="compliance-item">✓ GMP Standards</div>
-                            <div class="compliance-item">✓ ISO 10993 Biocompatibility</div>
-                            <div class="compliance-item">✓ ISO 11135 Sterilization</div>
-                            <div class="compliance-item">✓ ISO 14971 Risk Management</div>
+
+                        <div class="cert-card-compact">
+                            <div class="cert-icon-sm">✓</div>
+                            <div class="cert-info">
+                                <h4>CE Marking</h4>
+                                <p>European Conformity</p>
+                                <div class="cert-status">
+                                    <span class="status-dot"></span>
+                                    <span>Active</span>
+                                    <span class="cert-valid">Valid until 2027</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -628,14 +637,17 @@
         <div class="container">
             <div class="footer-main">
                 <div class="footer-company">
-                    <div class="footer-logo">
-                        <div class="logo-icon">R</div>
-                        <div class="logo-text">
-                            <div class="company-name">RISA IMPLANTAMA</div>
-                            <div class="tagline">SINCE 1993</div>
+                    <div class="footer-company-card">
+                        <div class="footer-company-content">
+                            <div class="footer-logo">
+                                <div class="logo-text">
+                                    <div class="company-name">PT. RISA IMPLANTAMA</div>
+                                    <div class="tagline">SINCE 1993</div>
+                                </div>
+                            </div>
+                            <p>Leading provider of precision orthopedic medical implants with over 30 years of excellence in the medical device industry.</p>
                         </div>
                     </div>
-                    <p>Leading provider of precision orthopedic medical implants with over 30 years of excellence in the medical device industry.</p>
                     
                     <div class="newsletter">
                         <h4>Stay Updated</h4>
@@ -647,6 +659,9 @@
                 </div>
                 
                 <div class="footer-links">
+
+
+
                     <div class="footer-column">
                         <h4>Products</h4>
                         <a href="#">OSFIX Plates</a>
@@ -665,14 +680,7 @@
                         <a href="#">News</a>
                     </div>
                     
-                    <!-- <div class="footer-column">
-                        <h4>Resources</h4>
-                        <a href="#">Technical Specs</a>
-                        <a href="#">Safety Data</a>
-                        <a href="#">Training</a>
-                        <a href="#">Support</a>
-                        <a href="#">Downloads</a>
-                    </div> -->
+              
                 </div>
                 
                 <div class="footer-contact">

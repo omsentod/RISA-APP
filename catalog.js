@@ -1,5 +1,5 @@
 const PRODUCTS = [
-    // ── PLATES ──
+
     { category: "Plates", title: "Broad Plate DCP", description: "Dynamic Compression Plate berukuran lebar untuk fiksasi tulang besar. Desain DCP memungkinkan kompresi aksial pada fraktur.", img: "assets/images/catalog/Broad Plate DCP.png" },
     { category: "Plates", title: "Broad LC Plate", description: "Low Contact plate lebar dengan area kontak minimal untuk menjaga suplai darah periosteal. Cocok untuk fraktur diafisis.", img: "assets/images/catalog/Broad LC.png" },
     { category: "Plates", title: "Narrow DCP Plate", description: "Dynamic Compression Plate ukuran sempit untuk fiksasi tulang dengan diameter kecil hingga sedang.", img: "assets/images/catalog/Narrow DCP.png" },
@@ -29,27 +29,27 @@ const PRODUCTS = [
     { category: "Plates", title: "Trochanter Ear Plate", description: "Plat penahan trokanter dengan desain telinga untuk fiksasi fraktur trokanter femur.", img: "assets/images/catalog/Trochanter Ear.png" },
     { category: "Plates", title: "Trochanter Straight Plate", description: "Plat trokanter lurus untuk fiksasi fraktur trokanter mayor femur.", img: "assets/images/catalog/Trochanter Straight.png" },
 
-    // ── RECONSTRUCTION PLATES ──
+
     { category: "Reconstruction Plates", title: "3.5 Reconstruction Curved", description: "Plat rekonstruksi 3.5mm yang dapat dibentuk ke berbagai sudut, ideal untuk fiksasi fraktur kompleks.", img: "assets/images/catalog/3_5 Recons Curved.png" },
     { category: "Reconstruction Plates", title: "3.5 Reconstruction Straight", description: "Plat rekonstruksi 3.5mm lurus yang fleksibel untuk konturing pada fraktur periartikular.", img: "assets/images/catalog/3_5 Recons Straight.png" },
     { category: "Reconstruction Plates", title: "4.5 Reconstruction Curved", description: "Plat rekonstruksi 4.5mm melengkung untuk fiksasi fraktur tulang besar yang kompleks.", img: "assets/images/catalog/4_5 Recons Curved.png" },
     { category: "Reconstruction Plates", title: "4.5 Reconstruction Straight", description: "Plat rekonstruksi 4.5mm lurus yang kuat untuk fiksasi fraktur pada tulang besar.", img: "assets/images/catalog/4_5 Recons Straight.png" },
     { category: "Reconstruction Plates", title: "Y Reconstruction Plate", description: "Plat rekonstruksi berbentuk Y untuk fiksasi fraktur di area persimpangan kompleks.", img: "assets/images/catalog/Y Reconst.png" },
 
-    // ── CORTICAL SCREWS ──
+
     { category: "Cortical Screws", title: "3.5mm Cortical Screw", description: "Sekrup kortikal 3.5mm berulir penuh untuk fiksasi tulang. Kepala sferis dengan soket hexagonal kecil.", img: "assets/images/catalog/3_5 Cortical Screw.png" },
     { category: "Cortical Screws", title: "3.5mm Cortical Screw ST", description: "Sekrup kortikal 3.5mm self-tapping dengan alur pemotong. Memudahkan pemasangan tanpa pre-tapping.", img: "assets/images/catalog/3_5 Cortical ST.png" },
     { category: "Cortical Screws", title: "4.5mm Cortical Screw", description: "Sekrup kortikal 4.5mm untuk tulang besar. Desain berulir penuh dengan kepala hexagonal.", img: "assets/images/catalog/4_5 Cortical Screw.png" },
     { category: "Cortical Screws", title: "4.5mm Cortical Screw ST", description: "Sekrup kortikal 4.5mm self-tapping. Ideal untuk fiksasi fraktur pada tulang kortikal tebal.", img: "assets/images/catalog/4_5 Cortical ST.png" },
 
-    // ── CANCELLOUS SCREWS ──
+
     { category: "Cancellous Screws", title: "3.5mm Cancellous Screw Full Thread", description: "Sekrup kanselus 3.5mm berulir penuh untuk fiksasi fragmen tulang spons kecil.", img: "assets/images/catalog/35 Cancellous Full.png" },
     { category: "Cancellous Screws", title: "4.0mm Cancellous Screw Full Thread", description: "Sekrup kanselus 4.0mm berulir penuh. Digunakan untuk fiksasi tulang kanselus dengan kompresi optimal.", img: "assets/images/catalog/4_0 Cancellous Full.png" },
     { category: "Cancellous Screws", title: "6.5mm Cancellous Screw Full Thread", description: "Sekrup kanselus besar 6.5mm berulir penuh untuk fiksasi fraktur femoral neck dan tulang besar.", img: "assets/images/catalog/6_5 Cancellous Full.png" },
     { category: "Cancellous Screws", title: "6.5mm Cancellous Screw 16mm Thread", description: "Sekrup kanselus 6.5mm dengan ulir 16mm (1/4 thread). Menghasilkan efek lag screw yang kuat.", img: "assets/images/catalog/6_5 Cancellous 16 Th.png" },
     { category: "Cancellous Screws", title: "6.5mm Cancellous Screw 32mm Thread", description: "Sekrup kanselus 6.5mm dengan ulir 32mm (1/2 thread). Digunakan untuk kompresi fraktur tulang besar.", img: "assets/images/catalog/6_5 Cancellous 32 Th.png" },
 
-    // ── PINS ──
+
     { category: "Pins", title: "K-Wire Trocar", description: "Kirschner wire dengan ujung trocar untuk traksi, fiksasi sementara, dan guide wire pada operasi ortopedi.", img: "assets/images/catalog/K Wire Tocar.png" },
     { category: "Pins", title: "Schanz Screw", description: "Sekrup Schanz untuk fiksasi eksternal. Berulir kortikal dengan alur self-tapping. Tersedia diameter 3–6mm.", img: "assets/images/catalog/Schanz Screw.png" },
 ];

@@ -15,6 +15,15 @@ menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
+const ctaClose = document.getElementById('ctaClose');
+const navCtaWrapper = document.getElementById('navCtaWrapper');
+
+if (ctaClose && navCtaWrapper) {
+    ctaClose.addEventListener('click', () => {
+        navCtaWrapper.classList.add('hide-cta');
+    });
+}
+
 const navLinksItems = navLinks.querySelectorAll('a');
 navLinksItems.forEach(link => {
     link.addEventListener('click', () => {
