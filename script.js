@@ -287,3 +287,68 @@ console.log('%c✓ CPAKB Certified', 'font-size: 12px; color: #666;');
 
     setSlide(0);
 })();
+
+// === COMPANY EVENTS SLIDER ===
+(function () {
+    const slides = document.querySelectorAll('.event-slide');
+    const thumbs = document.querySelectorAll('.event-thumb');
+    const prevBtn = document.getElementById('eventPrev');
+    const nextBtn = document.getElementById('eventNext');
+    const currentEl = document.getElementById('eventCurrent');
+    const totalEl = document.getElementById('eventTotal');
+    const total = slides.length;
+
+    if (!total) return;
+
+    // Update proper number of slides loaded just in case DOM overrides it
+    if (totalEl) totalEl.textContent = total;
+
+    let current = 0;
+
+    function setSlide(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        current = index;
+
+        // Change Main Image
+        slides.forEach(s => s.classList.remove('active'));
+        slides[current].classList.add('active');
+
+        // Change Thumbnails state
+        thumbs.forEach(t => t.classList.remove('active'));
+        if (thumbs[current]) thumbs[current].classList.add('active');
+
+        // Update Text Counter (1 / 3)
+        if (currentEl) currentEl.textContent = current + 1;
+
+        // Auto-scroll thumbnail container if it exists
+        if (thumbs[current]) {
+            thumbs[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    }
+
+    // Attach Click Events to Arrows
+    prevBtn && prevBtn.addEventListener('click', () => setSlide(current - 1));
+    nextBtn && nextBtn.addEventListener('click', () => setSlide(current + 1));
+
+    // Attach Click Events to Thumbnails
+    thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => setSlide(parseInt(thumb.dataset.index)));
+    });
+
+    // Optional Keyboard Navigation (Arrow Keys) when user is viewing the section
+    document.addEventListener('keydown', (e) => {
+        const gallery = document.querySelector('.event-main-display');
+        if (!gallery) return;
+
+        // Only trigger arrow keys if section is in viewport
+        const rect = gallery.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            if (e.key === 'ArrowRight') setSlide(current + 1);
+            if (e.key === 'ArrowLeft') setSlide(current - 1);
+        }
+    });
+
+    // Initialize the slides to start properly at index 0
+    setSlide(0);
+})();
