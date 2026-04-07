@@ -54,6 +54,7 @@
                                     @endforeach
                                 </select>
                             
+                            @elseif($field['type'] === 'image' || $field['type'] === 'file')
                                 @php
                                     $currentImage = null;
                                     $isFallback = false;
