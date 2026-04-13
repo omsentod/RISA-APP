@@ -62,10 +62,20 @@
                                 @endif
                                 @foreach($columns as $field => $label)
                                     <td class="px-6 py-4 whitespace-nowrap text-gray-800 align-middle">
-                                        @if(in_array($field, ['image_path', 'value', 'image_upload']) && is_string($item->$field) && (Str::contains($item->$field, 'settings/') || Str::contains($item->$field, 'products/') || Str::contains($item->$field, 'timeline/') || Str::contains($item->$field, 'facilities/') || Str::contains($item->$field, 'events/')))
-                                            <div class="h-16 w-24 rounded-lg shadow border border-gray-300 bg-white overflow-hidden p-1 flex justify-center items-center">
-                                                <img src="{{ asset('storage/' . $item->$field) }}" class="h-full w-auto object-contain">
-                                            </div>
+                                        @if(in_array($field, ['image_path', 'image']) || (is_string($item->$field) && preg_match('/\.(jpg|jpeg|png|gif|webp|svg)$/i', $item->$field)))
+                                            @if($item->$field)
+                                                @php
+                                                    $rawPath = (string) $item->$field;
+                                                    $src = str_starts_with($rawPath, 'catalog/') 
+                                                        ? asset('assets/images/' . $rawPath) 
+                                                        : (str_starts_with($rawPath, 'http') ? $rawPath : asset('storage/' . $rawPath));
+                                                @endphp
+                                                <div class="h-16 w-24 rounded-lg shadow border border-gray-300 bg-white overflow-hidden p-1 flex justify-center items-center">
+                                                    <img src="{{ $src }}" class="h-full w-auto object-contain" alt="Image">
+                                                </div>
+                                            @else
+                                                <span class="text-gray-400 text-xs italic">Belum ada gambar</span>
+                                            @endif
                                         @else
                                             <span class="font-medium text-base">{{ Str::limit((string)$item->$field, 50) }}</span>
                                         @endif

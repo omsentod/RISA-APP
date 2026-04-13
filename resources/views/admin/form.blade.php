@@ -60,7 +60,10 @@
                                     $isFallback = false;
                                     
                                     if (isset($item) && $item->$name) {
-                                        $currentImage = asset('storage/' . $item->$name);
+                                        $rawPath = (string) $item->$name;
+                                        $currentImage = str_starts_with($rawPath, 'catalog/') 
+                                            ? asset('assets/images/' . $rawPath) 
+                                            : (str_starts_with($rawPath, 'http') ? $rawPath : asset('storage/' . $rawPath));
                                     } elseif (isset($item) && $name === 'image_upload' && isset($item->type) && $item->type === 'image' && $item->value) {
                                         $currentImage = asset('storage/' . $item->value);
                                     } else {

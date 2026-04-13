@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -62,7 +62,24 @@
   <a href="{{ route('login') }}" title="Admin Login" style="color: inherit; text-decoration: none; outline: none;">©</a> 2026 PT RISA IMPLANTAMA &nbsp;•&nbsp; Jl. Medokan Sawah Timur No. 41 Surabaya &nbsp;•&nbsp;
   <a href="mailto:risa.implantama@gmail.com">risa.implantama@gmail.com</a>
 </footer>
+@php
+    $productData = $products->map(function($p) {
+        $imagePath = (string) $p->image_path;
+        $imgPath = str_starts_with($imagePath, 'catalog/') 
+            ? asset('assets/images/' . $imagePath) 
+            : asset('storage/' . $imagePath);
 
+        return [
+            'category' => $p->category,
+            'title' => $p->name,
+            'description' => $p->material,
+            'img' => $imgPath
+        ];
+    });
+@endphp
+<script>
+    const PRODUCTS = @json($productData);
+</script>
 <script src="{{ asset('catalog.js') }}"></script>
 </body>
 </html>

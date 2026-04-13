@@ -18,7 +18,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/catalog', function () {
-    return view('catalog');
+    $products = \App\Models\Product::orderBy('sort_order')->get();
+    return view('catalog', compact('products'));
 })->name('catalog');
 
 Route::middleware('auth')->group(function () {
