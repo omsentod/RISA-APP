@@ -18,7 +18,6 @@ class CompanyEventController extends Controller
         return view('admin.index', [
             'isTrash' => $isTrash,
             'items' => $items,
-            'items' => $items,
             'title' => 'Company Events',
             'createUrl' => route('admin.company-events.create'),
             'routePrefix' => 'admin.company-events',
@@ -26,11 +25,11 @@ class CompanyEventController extends Controller
         ]);
     }
 
-    public function create(\Illuminate\Http\Request $request)
+    public function create(Request $request)
     {
         $item = null;
         if ($request->has('duplicate')) {
-            $original = \App\Models\CompanyEvent::find($request->duplicate);
+            $original = CompanyEvent::find($request->duplicate);
             if ($original) {
                 $item = $original->replicate();
             }
@@ -131,7 +130,8 @@ class CompanyEventController extends Controller
     {
         $dup = CompanyEvent::findOrFail($request->duplicate)->toArray();
         unset($dup['id']);
-        $request->session()->flashInput($dup);
-        return redirect()->route('admin.company-events.create')->with('success', 'Data berhasil disalin. Silakan ulas dan simpan sebagai data baru.');
+        return redirect()->route('admin.company-events.create')
+            ->withInput($dup)
+            ->with('success', 'Data berhasil disalin. Silakan ulas dan simpan sebagai data baru.');
     }
 }

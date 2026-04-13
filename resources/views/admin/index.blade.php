@@ -6,7 +6,7 @@
         'admin.facilities' => 'Facility',
         'admin.company-events' => 'CompanyEvent',
     ];
-    $modelClass = $routePrefix ? ($modelMap[$routePrefix] ?? '') : '';
+    $modelClass = $routePrefix ? ($modelMap[(string) $routePrefix] ?? '') : '';
 @endphp
     <x-slot name="header">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">

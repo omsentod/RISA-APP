@@ -18,7 +18,6 @@ class FacilityController extends Controller
         return view('admin.index', [
             'isTrash' => $isTrash,
             'items' => $items,
-            'items' => $items,
             'title' => 'Facilities',
             'createUrl' => route('admin.facilities.create'),
             'routePrefix' => 'admin.facilities',
@@ -26,11 +25,11 @@ class FacilityController extends Controller
         ]);
     }
 
-    public function create(\Illuminate\Http\Request $request)
+    public function create(Request $request)
     {
         $item = null;
         if ($request->has('duplicate')) {
-            $original = \App\Models\Facility::find($request->duplicate);
+            $original = Facility::find($request->duplicate);
             if ($original) {
                 $item = $original->replicate();
             }
@@ -131,7 +130,8 @@ class FacilityController extends Controller
     {
         $dup = Facility::findOrFail($request->duplicate)->toArray();
         unset($dup['id']);
-        $request->session()->flashInput($dup);
-        return redirect()->route('admin.facilities.create')->with('success', 'Data berhasil disalin. Silakan ulas dan simpan sebagai data baru.');
+        return redirect()->route('admin.facilities.create')
+            ->withInput($dup)
+            ->with('success', 'Data berhasil disalin. Silakan ulas dan simpan sebagai data baru.');
     }
 }

@@ -99,18 +99,31 @@
                                         @endif
                                     </div>
                                 @endif
-                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 mb-2 border-dashed rounded-md hover:border-blue-400 focus-within:border-blue-500 hover:bg-blue-50 transition-colors">
-                                    <div class="space-y-1 text-center">
+                                <label for="{{ $name }}" class="file-drop-area block mt-1 flex flex-col items-center justify-center px-6 pt-5 pb-6 border-2 border-gray-300 mb-2 border-dashed rounded-md hover:border-blue-400 focus-within:border-blue-500 hover:bg-blue-50 transition-colors relative cursor-pointer" id="dropzone-{{ $name }}">
+                                    <input id="{{ $name }}" name="{{ $name }}" type="file" class="sr-only file-input" accept="image/png, image/jpeg, image/gif, image/webp">
+                                    
+                                    <!-- Default State -->
+                                    <div class="space-y-1 text-center default-state">
                                         <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true"><path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                                        <div class="flex text-sm text-gray-600 justify-center">
-                                            <label for="{{ $name }}" class="relative cursor-pointer rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500 px-1 py-1">
-                                                <span>Click to upload a file</span>
-                                                <input id="{{ $name }}" name="{{ $name }}" type="file" class="sr-only">
-                                            </label>
+                                        <div class="flex text-sm text-gray-600 justify-center mt-2">
+                                            <span class="font-medium text-blue-600">Click to upload</span>
+                                            <span class="pl-1">or drag and drop</span>
                                         </div>
-                                        <p class="text-xs text-gray-500">PNG, JPG, GIF up to 5MB</p>
+                                        <p class="text-xs text-gray-500 pt-1">PNG, JPG, GIF up to 5MB</p>
                                     </div>
-                                </div>
+                                    
+                                    <!-- Preview State (Hidden by default) -->
+                                    <div class="preview-state hidden flex-col items-center justify-center text-center w-full">
+                                        <div class="h-32 w-auto min-w-[8rem] bg-gray-50 flex items-center justify-center rounded-lg border border-gray-200 overflow-hidden mb-3">
+                                            <img class="preview-image h-full w-full object-contain" src="#" alt="Preview">
+                                        </div>
+                                        <div class="bg-blue-50 border border-blue-100 rounded-md py-1.5 px-3 flex items-center max-w-[90%]">
+                                            <svg class="w-4 h-4 text-blue-600 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                                            <span class="preview-filename text-sm font-bold text-blue-800 truncate">filename.jpg</span>
+                                        </div>
+                                        <p class="text-xs text-slate-500 mt-2 font-medium opacity-80">Click or drag a new image to replace</p>
+                                    </div>
+                                </label>
                             
                             @else
                                 <input type="{{ $field['type'] }}" name="{{ $name }}" id="{{ $name }}" value="{{ old($name, $item->$name ?? '') }}" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-shadow {{ ($field['readonly'] ?? false) ? 'bg-gray-100 cursor-not-allowed text-gray-500 border-gray-200 shadow-none' : '' }}" {{ ($field['readonly'] ?? false) ? 'readonly' : '' }}>
@@ -131,4 +144,85 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropAreas = document.querySelectorAll('.file-drop-area');
+
+            dropAreas.forEach(dropArea => {
+                const fileInput = dropArea.querySelector('.file-input');
+                const defaultState = dropArea.querySelector('.default-state');
+                const previewState = dropArea.querySelector('.preview-state');
+                const previewImage = dropArea.querySelector('.preview-image');
+                const previewFilename = dropArea.querySelector('.preview-filename');
+
+                // Prevent default drag behaviors
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    dropArea.addEventListener(eventName, preventDefaults, false);
+                    document.body.addEventListener(eventName, preventDefaults, false);
+                });
+
+                function preventDefaults(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+
+                // Highlight drop area when item is dragged over it
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    dropArea.addEventListener(eventName, highlight, false);
+                });
+
+                ['dragleave', 'drop'].forEach(eventName => {
+                    dropArea.addEventListener(eventName, unhighlight, false);
+                });
+
+                function highlight(e) {
+                    dropArea.classList.add('border-blue-500', 'bg-blue-50');
+                    dropArea.classList.remove('border-gray-300');
+                }
+
+                function unhighlight(e) {
+                    dropArea.classList.remove('border-blue-500', 'bg-blue-50');
+                    dropArea.classList.add('border-gray-300');
+                }
+
+                // Handle dropped files
+                dropArea.addEventListener('drop', handleDrop, false);
+
+                function handleDrop(e) {
+                    const dt = e.dataTransfer;
+                    const files = dt.files;
+                    if(files.length > 0) {
+                        fileInput.files = files; // transfer files to input natively!
+                        handleFiles(files);
+                    }
+                }
+
+                // Handle file selection from conventional click
+                fileInput.addEventListener('change', function(e) {
+                    handleFiles(this.files);
+                });
+
+                function handleFiles(files) {
+                    if(files.length === 0) return;
+                    
+                    const file = files[0];
+                    if (!file.type.startsWith('image/')) return; // Validate image
+
+                    // Display filename cleanly
+                    previewFilename.textContent = file.name;
+
+                    // Render Preview Image via FileReader Blob
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        // Hide conventional SVG, Show Image Preview DOM!
+                        defaultState.classList.add('hidden');
+                        previewState.classList.remove('hidden');
+                        previewState.classList.add('flex');
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
 </x-app-layout>
