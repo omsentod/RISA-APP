@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -141,23 +141,6 @@
                 </div>
 
                 <div class="products-scroll">
-                    @forelse($products as $product)
-                    <div class="product-card">
-                        <div class="product-image-wrapper" style="background-color: white;">
-                            <img src="{{ $product->image_path ? asset('storage/' . $product->image_path) : asset('assets/images/catalog/L Buttress.png') }}" alt="{{ $product->name }}" style="width: 100%; height: 100%; object-fit: contain; padding: 10px;">
-                            <div class="product-category">{{ $product->category }}</div>
-                            <div class="product-brand">
-                                <img src="{{ asset('assets/images/risa-logo.png') }}" alt="risa-logo">
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3>{{ $product->name }}</h3>
-                            <div class="product-material">
-                                {{ $product->material }}
-                            </div>
-                        </div>
-                    </div>
-                    @empty
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Locking Plate">
@@ -236,7 +219,6 @@
                             </div>
                         </div>
                     </div>
-                    @endforelse
 
 
                     <div class="product-card cta-card">
