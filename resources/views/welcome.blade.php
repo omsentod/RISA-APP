@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PT RISA IMPLANTAMA - Premium Orthopedic Implants</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v={{ filemtime(public_path('styles.css')) }}">
     <link rel="icon" href="assets/images/web-logo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -675,7 +675,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v={{ filemtime(public_path('script.js')) }}"></script>
 </body>
 
 </html>

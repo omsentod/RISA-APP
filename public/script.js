@@ -243,7 +243,7 @@ console.log('%c✓ CPAKB Certified', 'font-size: 12px; color: #666;');
 
     let current = 0;
 
-    function setSlide(index) {
+    function setSlide(index, isInit = false) {
         if (index < 0) index = total - 1;
         if (index >= total) index = 0;
         current = index;
@@ -259,7 +259,7 @@ console.log('%c✓ CPAKB Certified', 'font-size: 12px; color: #666;');
 
         if (currentEl) currentEl.textContent = String(current + 1).padStart(2, '0');
 
-        if (thumbs[current]) {
+        if (!isInit && thumbs[current]) {
             thumbs[current].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         }
     }
@@ -285,7 +285,7 @@ console.log('%c✓ CPAKB Certified', 'font-size: 12px; color: #666;');
         }
     });
 
-    setSlide(0);
+    setSlide(0, true);
 })();
 
 // === COMPANY EVENTS SLIDER ===
@@ -305,7 +305,7 @@ console.log('%c✓ CPAKB Certified', 'font-size: 12px; color: #666;');
 
     let current = 0;
 
-    function setSlide(index) {
+    function setSlide(index, isInit = false) {
         if (index < 0) index = total - 1;
         if (index >= total) index = 0;
         current = index;
@@ -322,7 +322,7 @@ console.log('%c✓ CPAKB Certified', 'font-size: 12px; color: #666;');
         if (currentEl) currentEl.textContent = current + 1;
 
         // Auto-scroll thumbnail container if it exists
-        if (thumbs[current]) {
+        if (!isInit && thumbs[current]) {
             thumbs[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
     }
@@ -350,7 +350,7 @@ console.log('%c✓ CPAKB Certified', 'font-size: 12px; color: #666;');
     });
 
     // Initialize the slides to start properly at index 0
-    setSlide(0);
+    setSlide(0, true);
 })();
 
 // === IMAGE PROTECTION ===
