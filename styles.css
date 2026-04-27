@@ -27,6 +27,8 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
@@ -35,6 +37,7 @@ body {
     background: var(--color-white);
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100%;
 }
 
 img {
