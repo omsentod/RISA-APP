@@ -27,7 +27,9 @@
 
 html {
     scroll-behavior: smooth;
+    width: 100%;
     overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
 }
 
@@ -36,7 +38,9 @@ body {
     color: var(--color-navy);
     background: var(--color-white);
     line-height: 1.6;
+    width: 100%;
     overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
 }
 
@@ -1409,6 +1413,7 @@ section {
 .certifications-bg {
     position: absolute;
     inset: 0;
+    overflow: hidden;
     z-index: 0;
 }
 
@@ -1771,6 +1776,7 @@ section {
 .footer-bg {
     position: absolute;
     inset: 0;
+    overflow: hidden;
     z-index: 0;
 }
 
