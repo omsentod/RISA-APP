@@ -243,11 +243,11 @@
                     <div class="supported-by">
                         <p class="supported-title">Supported by</p>
                         <div class="supported-logos">
-                            <div class="support-logo-box"><img src="assets/images/obat_keras.png" alt="Support Logo 1">
+                            <div class="support-logo-box"><img src="assets/images/osfix.jpeg" alt="Support Logo 1">
                             </div>
-                            <div class="support-logo-box"><img src="assets/images/JAMU_FIX.png" alt="Support Logo 2">
+                            <div class="support-logo-box"><img src="assets/images/osteno.jpeg" alt="Support Logo 2">
                             </div>
-                            <div class="support-logo-box"><img src="assets/images/OHT_FIX.png" alt="Support Logo 3">
+                            <div class="support-logo-box"><img src="assets/images/rodic.jpeg" alt="Support Logo 3">
                             </div>
                         </div>
                     </div>
