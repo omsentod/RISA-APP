@@ -140,95 +140,99 @@
                     </p>
                 </div>
 
-                <div class="products-scroll">
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Locking Plate">
-                            <div class="product-category">Fixation Systems</div>
-                            <div class="product-brand">
-                                <img src="assets/images/risa-logo.png" alt="risa-logo">
+                <div class="products-scroll-container">
+                    <button class="products-nav-arrow products-prev" id="productsPrev" aria-label="Previous product" type="button">‹</button>
+                    <div class="products-scroll" id="productsScroll">
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Locking Plate">
+                                <div class="product-category">Fixation Systems</div>
+                                <div class="product-brand">
+                                    <img src="assets/images/risa-logo.png" alt="risa-logo">
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h3>Arthroscopy</h3>
+                                <div class="product-material">
+                                    Ti-6Al-4V Titanium
+                                </div>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <h3>Arthroscopy</h3>
-                            <div class="product-material">
-                                Ti-6Al-4V Titanium
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Cortical Screw">
-                            <div class="product-category">Fastening Solutions</div>
-                            <div class="product-brand">
-                                <img src="assets/images/risa-logo.png" alt="risa-logo">
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Cortical Screw">
+                                <div class="product-category">Fastening Solutions</div>
+                                <div class="product-brand">
+                                    <img src="assets/images/risa-logo.png" alt="risa-logo">
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h3>Arthroplasty(Elbow & Shoulder)</h3>
+                                <div class="product-material">
+                                    Medical Grade Titanium
+                                </div>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <h3>Arthroplasty(Elbow & Shoulder)</h3>
-                            <div class="product-material">
-                                Medical Grade Titanium
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Trauma System">
-                            <div class="product-category">Emergency Solutions</div>
-                            <div class="product-brand">
-                                <img src="assets/images/risa-logo.png" alt="risa-logo">
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Trauma System">
+                                <div class="product-category">Emergency Solutions</div>
+                                <div class="product-brand">
+                                    <img src="assets/images/risa-logo.png" alt="risa-logo">
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h3>Traumatology Implants</h3>
+                                <div class="product-material">
+                                    Titanium Alloy
+                                </div>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <h3>Traumatology Implants</h3>
-                            <div class="product-material">
-                                Titanium Alloy
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Compression Screw">
-                            <div class="product-category">Advanced Fixation</div>
-                            <div class="product-brand">
-                                <img src="assets/images/risa-logo.png" alt="risa-logo">
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Compression Screw">
+                                <div class="product-category">Advanced Fixation</div>
+                                <div class="product-brand">
+                                    <img src="assets/images/risa-logo.png" alt="risa-logo">
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h3>External Fixator</h3>
+                                <div class="product-material">
+                                    Ti-6Al-4V Titanium
+                                </div>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <h3>External Fixator</h3>
-                            <div class="product-material">
-                                Ti-6Al-4V Titanium
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Compression Screw">
+                                <div class="product-category">Advanced Fixation</div>
+                                <div class="product-brand">
+                                    <img src="assets/images/risa-logo.png" alt="risa-logo">
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h3>Instruments & Container</h3>
+                                <div class="product-material">
+                                    Ti-6Al-4V Titanium
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="assets/images/catalog/L Buttress.png" alt="OSFIX Compression Screw">
-                            <div class="product-category">Advanced Fixation</div>
-                            <div class="product-brand">
-                                <img src="assets/images/risa-logo.png" alt="risa-logo">
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3>Instruments & Container</h3>
-                            <div class="product-material">
-                                Ti-6Al-4V Titanium
-                            </div>
-                        </div>
-                    </div>
 
 
-                    <div class="product-card cta-card">
-                        <div class="cta-content">
-                            <a class="cta-icon" href="catalog">→</a>
-                            <h3>View Complete Catalog</h3>
-                            <p>Download our comprehensive product specifications and technical documentation</p>
-                            <button class="btn-primary">Download PDF</button>
+                        <div class="product-card cta-card">
+                            <div class="cta-content">
+                                <a class="cta-icon" href="catalog">→</a>
+                                <h3>View Complete Catalog</h3>
+                                <p>Download our comprehensive product specifications and technical documentation</p>
+                                <button class="btn-primary">Download PDF</button>
+                            </div>
                         </div>
                     </div>
+                    <button class="products-nav-arrow products-next" id="productsNext" aria-label="Next product" type="button">›</button>
                 </div>
 
                 <div class="swipe-indicator">

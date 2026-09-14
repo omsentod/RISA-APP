@@ -135,14 +135,95 @@ timelineCards.forEach(el => {
 const productsScroll = document.querySelector('.products-scroll');
 
 if (productsScroll) {
+    const prevBtn = document.getElementById('productsPrev');
+    const nextBtn = document.getElementById('productsNext');
 
-    const productCards = document.querySelectorAll('.product-card');
+    // 1. Navigation Buttons (Prev & Next)
+    const getScrollStep = () => {
+        const firstCard = productsScroll.querySelector('.product-card');
+        return firstCard ? firstCard.offsetWidth + 32 : 480;
+    };
 
-    productsScroll.addEventListener('scroll', () => {
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            productsScroll.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+        });
+    }
 
-        const scrollPercentage = (productsScroll.scrollLeft / (productsScroll.scrollWidth - productsScroll.clientWidth)) * 100;
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            productsScroll.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+        });
+    }
 
+    // 2. Mouse Wheel to Horizontal Scroll
+    productsScroll.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+            const isAtStart = productsScroll.scrollLeft <= 2;
+            const isAtEnd = productsScroll.scrollLeft + productsScroll.clientWidth >= productsScroll.scrollWidth - 2;
+
+            // Only hijack scroll if there's room to scroll horizontally in the direction of the wheel
+            if ((e.deltaY > 0 && !isAtEnd) || (e.deltaY < 0 && !isAtStart)) {
+                e.preventDefault();
+                productsScroll.scrollLeft += e.deltaY;
+            }
+        }
+    }, { passive: false });
+
+    // 3. Click & Drag to Scroll (Mouse Grab)
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+    let hasMoved = false;
+
+    productsScroll.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        isDown = true;
+        hasMoved = false;
+        startX = e.pageX - productsScroll.offsetLeft;
+        scrollStart = productsScroll.scrollLeft;
+        productsScroll.classList.add('grabbing');
     });
+
+    window.addEventListener('mouseup', () => {
+        if (!isDown) return;
+        isDown = false;
+        productsScroll.classList.remove('grabbing');
+    });
+
+    productsScroll.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - productsScroll.offsetLeft;
+        const walk = x - startX;
+        if (Math.abs(walk) > 6) {
+            hasMoved = true;
+        }
+        productsScroll.scrollLeft = scrollStart - walk;
+    });
+
+    // Prevent accidental click when dragging
+    productsScroll.addEventListener('click', (e) => {
+        if (hasMoved) {
+            e.preventDefault();
+            e.stopPropagation();
+            hasMoved = false;
+        }
+    }, true);
+
+    // 4. Update Nav Buttons state on scroll
+    const updateNavButtons = () => {
+        if (!prevBtn || !nextBtn) return;
+        const isAtStart = productsScroll.scrollLeft <= 5;
+        const isAtEnd = productsScroll.scrollLeft + productsScroll.clientWidth >= productsScroll.scrollWidth - 5;
+        prevBtn.style.opacity = isAtStart ? '0.35' : '1';
+        prevBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
+        nextBtn.style.opacity = isAtEnd ? '0.35' : '1';
+        nextBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+    };
+
+    productsScroll.addEventListener('scroll', updateNavButtons);
+    updateNavButtons();
 }
 
 const metricsSection = document.querySelector('.certifications');
