@@ -18,8 +18,8 @@
             <div class="container">
                 <div class="top-bar-content">
                     <div class="contact-info">
-                        <a href="tel:+62123456789">📞+62 21 1234 56786</a>
-                        <a href="mailto:info@risaimplantama.com">✉️ risa.implantama@gmail.com</a>
+                        <a href="https://wa.me/6281359938800" target="_blank" rel="noopener noreferrer">📞+62 813 5993 8800</a>
+                        <a href="mailto:risa.implantama@gmail.com">✉️ risa.implantama@gmail.com</a>
                     </div>
                     <div class="certification-badge">
                         <span class="pulse-dot"></span>
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="nav-cta-desktop">
-                            <a href="" class="btn-primary" style="text-decoration:none;">Submit an offer →</a>
+                            <a href="https://wa.me/6281359938800?text=Halo%20PT%20RISA%20IMPLANTAMA,%20saya%20ingin%20mengajukan%20penawaran." target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-decoration:none;">Submit an offer →</a>
                         </div>
                     </div>
 
@@ -65,7 +65,7 @@
 
     <!-- Mobile CTA Wrapper (moved outside header for fixed positioning) -->
     <div class="nav-cta-wrapper" id="navCtaWrapper">
-        <a href="" class="btn-primary"
+        <a href="https://wa.me/6281359938800?text=Halo%20PT%20RISA%20IMPLANTAMA,%20saya%20ingin%20mengajukan%20penawaran." target="_blank" rel="noopener noreferrer" class="btn-primary"
             style="text-decoration:none; display: flex; align-items: center; justify-content: center;">
             Submit an offer <span style="font-size: 20px; margin-left: 10px;">→</span>
         </a>
@@ -611,11 +611,15 @@
 
                     <div class="footer-column">
                         <h4>Products</h4>
-                        <a href="#">OSFIX Plates</a>
-                        <a href="#">OSFIX Screws</a>
-                        <a href="#">Trauma Systems</a>
-                        <a href="#">Surgical Tools</a>
-                        <a href="#">Full Catalog</a>
+                        <a href="/catalog">Traumatology Implants</a>
+                        <a href="/catalog">Arthroplasty</a>
+                        <a href="/catalog">Arthoscopy</a>
+                        <a href="/catalog">Spinal Products</a>
+                        <a href="/catalog">Nailing</a>
+                        <a href="/catalog">Instruments</a>
+                        <a href="/catalog">External Fixator</a>
+                        <a href="/catalog">Surgical Tools</a>
+                        <a href="/catalog">Full Catalog</a>
                     </div>
 
                     <div class="footer-column">
@@ -632,27 +636,27 @@
 
                 <div class="footer-contact">
                     <h4>Contact Us</h4>
-                    <div class="contact-card">
+                    <a href="https://wa.me/6281359938800" target="_blank" rel="noopener noreferrer" class="contact-card">
                         <div class="contact-icon">📞</div>
                         <div>
                             <div class="contact-label">Phone</div>
-                            <div class="contact-value">+62 21 1234 5678</div>
+                            <div class="contact-value">+62 813 5993 8800</div>
                         </div>
-                    </div>
-                    <div class="contact-card">
+                    </a>
+                    <a href="mailto:risa.implantama@gmail.com" class="contact-card">
                         <div class="contact-icon">✉️</div>
                         <div>
                             <div class="contact-label">Email</div>
                             <div class="contact-value">risa.implantama@gmail.com</div>
                         </div>
-                    </div>
-                    <div class="contact-card">
+                    </a>
+                    <a href="https://maps.google.com/?q=PT+RISA+IMPLANTAMA+Jl.+Medokan+Sawah+Timur+No.+41+Surabaya" target="_blank" rel="noopener noreferrer" class="contact-card">
                         <div class="contact-icon">📍</div>
                         <div>
                             <div class="contact-label">Location</div>
                             <div class="contact-value">Surabaya, Indonesia</div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 

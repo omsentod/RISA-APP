@@ -1988,10 +1988,14 @@ section {
     border-radius: var(--radius-sm);
     margin-bottom: 16px;
     transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .contact-card:hover {
     background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
 }
 
 .contact-icon {
