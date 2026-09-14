@@ -150,7 +150,7 @@
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3>Arthoscopy</h3>
+                            <h3>Arthroscopy</h3>
                             <div class="product-material">
                                 Ti-6Al-4V Titanium
                             </div>
@@ -166,7 +166,7 @@
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3>Arthoplasty(Elbow & Shoulder)</h3>
+                            <h3>Arthroplasty(Elbow & Shoulder)</h3>
                             <div class="product-material">
                                 Medical Grade Titanium
                             </div>
@@ -613,7 +613,7 @@
                         <h4>Products</h4>
                         <a href="/catalog">Traumatology Implants</a>
                         <a href="/catalog">Arthroplasty</a>
-                        <a href="/catalog">Arthoscopy</a>
+                        <a href="/catalog">Arthroscopy</a>
                         <a href="/catalog">Spinal Products</a>
                         <a href="/catalog">Nailing</a>
                         <a href="/catalog">Instruments</a>
